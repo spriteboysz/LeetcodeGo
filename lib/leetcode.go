@@ -5,7 +5,7 @@
  * Description:
  */
 
-package main
+package lib
 
 import "fmt"
 

@@ -7,12 +7,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"leetcode/lib"
+)
+
+type TreeNode = lib.TreeNode
 
 func checkTree(root *TreeNode) bool {
 	return root.Val == root.Left.Val+root.Right.Val
 }
 
 func main() {
-	fmt.Println()
+	root := lib.Nums2Tree([]int{3, 2, 1})
+	fmt.Println(checkTree(root))
 }
