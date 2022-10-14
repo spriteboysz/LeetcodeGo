@@ -8,51 +8,46 @@
 package lib
 
 import (
-	"fmt"
+	"strconv"
+	"strings"
 )
 
 // ListNode 是链接节点
-// 这个不能复制到*_test.go文件中。会导致Travis失败
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-// List2Nums convert List to []int
-func List2Nums(head *ListNode) []int {
-	// 链条深度限制，链条深度超出此限制，会 panic
-	limit := 100
-
-	times := 0
-
-	var res []int
+// List2String convert List to string
+func List2String(head *ListNode) string {
+	var res []string
 	for head != nil {
-		times++
-		if times > limit {
-			msg := fmt.Sprintf("链条深度超过%d，可能出现环状链条。请检查错误，或者放宽 l2s 函数中 limit 的限制。", limit)
-			panic(msg)
-		}
-
-		res = append(res, head.Val)
+		res = append(res, strconv.Itoa(head.Val))
 		head = head.Next
 	}
 
-	return res
+	return strings.Join(res, ",")
 }
 
-// Nums2List convert []int to List
-func Nums2List(nums []int) *ListNode {
+// Str2List convert []int to List
+func Str2List(s string) *ListNode {
+	strs := strings.Split(s[1:len(s)-1], ",")
+	var nums []int
+	for _, str := range strs {
+		num, _ := strconv.Atoi(str)
+		nums = append(nums, num)
+	}
 	if len(nums) == 0 {
 		return nil
 	}
 
-	l := &ListNode{}
-	t := l
+	dummy := &ListNode{}
+	cur := dummy
 	for _, v := range nums {
-		t.Next = &ListNode{Val: v}
-		t = t.Next
+		cur.Next = &ListNode{Val: v}
+		cur = cur.Next
 	}
-	return l.Next
+	return dummy.Next
 }
 
 // GetNodeWith returns the first node with val
@@ -67,11 +62,11 @@ func (l *ListNode) GetNodeWith(val int) *ListNode {
 	return res
 }
 
-// Nums2ListWithCycle returns a list whose tail point to pos-indexed node
+// Str2ListWithCycle returns a list whose tail point to pos-indexed node
 // head's index is 0
 // if pos = -1, no cycle
-func Nums2ListWithCycle(nums []int, pos int) *ListNode {
-	head := Nums2List(nums)
+func Str2ListWithCycle(s string, pos int) *ListNode {
+	head := Str2List(s)
 	if pos == -1 {
 		return head
 	}

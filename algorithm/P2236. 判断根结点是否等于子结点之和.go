@@ -19,6 +19,6 @@ func checkTree(root *TreeNode) bool {
 }
 
 func main() {
-	root := lib.Nums2Tree([]int{3, 2, 1})
+	root := lib.Str2Tree("[3,NULL,1]")
 	fmt.Println(checkTree(root))
 }

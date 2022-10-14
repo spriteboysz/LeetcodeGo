@@ -10,6 +10,7 @@ package lib
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 // TreeNode is tree's node
@@ -22,8 +23,18 @@ type TreeNode struct {
 // NULL 方便添加测试数据
 var NULL = -1 << 63
 
-// Nums2Tree 利用 []int 生成 *TreeNode
-func Nums2Tree(nums []int) *TreeNode {
+// Str2Tree 利用 []int 生成 *TreeNode
+func Str2Tree(s string) *TreeNode {
+	strs := strings.Split(s[1:len(s)-1], ",")
+	var nums []int
+	for _, str := range strs {
+		if str == "NULL" {
+			nums = append(nums, NULL)
+		} else {
+			num, _ := strconv.Atoi(str)
+			nums = append(nums, num)
+		}
+	}
 	n := len(nums)
 	if n == 0 {
 		return nil
@@ -198,9 +209,9 @@ func (tn *TreeNode) Equal(a *TreeNode) bool {
 	return tn.Left.Equal(a.Left) && tn.Right.Equal(a.Right)
 }
 
-// Tree2Nums 把 *TreeNode 按照行还原成 []int
-func Tree2Nums(tn *TreeNode) []int {
-	res := make([]int, 0, 1024)
+// Tree2String 把 *TreeNode 按照行还原成 []int
+func Tree2String(tn *TreeNode) string {
+	res := make([]string, 0, 1024)
 
 	queue := []*TreeNode{tn}
 
@@ -209,9 +220,9 @@ func Tree2Nums(tn *TreeNode) []int {
 		for i := 0; i < size; i++ {
 			nd := queue[i]
 			if nd == nil {
-				res = append(res, NULL)
+				res = append(res, "NULL")
 			} else {
-				res = append(res, nd.Val)
+				res = append(res, strconv.Itoa(nd.Val))
 				queue = append(queue, nd.Left, nd.Right)
 			}
 		}
@@ -219,11 +230,11 @@ func Tree2Nums(tn *TreeNode) []int {
 	}
 
 	i := len(res)
-	for i > 0 && res[i-1] == NULL {
+	for i > 0 && res[i-1] == "NULL" {
 		i--
 	}
 
-	return res[:i]
+	return strings.Join(res[:i], ",")
 }
 
 // T2s converts *TreeNode to []int
