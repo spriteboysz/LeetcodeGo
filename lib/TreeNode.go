@@ -234,7 +234,7 @@ func Tree2String(tn *TreeNode) string {
 		i--
 	}
 
-	return strings.Join(res[:i], ",")
+	return "[" + strings.Join(res[:i], ",") + "]"
 }
 
 // T2s converts *TreeNode to []int

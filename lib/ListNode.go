@@ -26,7 +26,7 @@ func List2String(head *ListNode) string {
 		head = head.Next
 	}
 
-	return strings.Join(res, ",")
+	return "[" + strings.Join(res, ",") + "]"
 }
 
 // Str2List convert []int to List

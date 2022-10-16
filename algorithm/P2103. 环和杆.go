@@ -9,7 +9,7 @@ package main
 
 import "fmt"
 
-func countPoints_2103(rings string) int {
+func countpoints2103(rings string) int {
 	var rods [10]int
 	for i := 0; i < len(rings); i += 2 {
 		switch rings[i] {
@@ -31,5 +31,5 @@ func countPoints_2103(rings string) int {
 }
 
 func main() {
-	fmt.Println(countPoints_2103("B0R0G0R9R0B0G0"))
+	fmt.Println(countpoints2103("B0R0G0R9R0B0G0"))
 }
