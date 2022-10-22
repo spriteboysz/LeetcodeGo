@@ -28,8 +28,8 @@ func Str2Tree(s string) *TreeNode {
 	strs := strings.Split(s[1:len(s)-1], ",")
 	var nums []int
 	for _, str := range strs {
-		if str == "NULL" {
-			// nums = append(nums, NULL)
+		if str == "NULL" || str == "null" {
+			nums = append(nums, NULL)
 		} else {
 			num, _ := strconv.Atoi(str)
 			nums = append(nums, num)
