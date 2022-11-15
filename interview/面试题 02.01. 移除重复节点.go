@@ -18,7 +18,7 @@ func removeDuplicateNodes(head *lib.ListNode) *lib.ListNode {
 		oc := ob
 		for oc.Next != nil {
 			if oc.Next.Val == ob.Val {
-				oc.Next.Next = oc.Next
+				oc.Next = oc.Next.Next
 			} else {
 				oc = oc.Next
 			}
