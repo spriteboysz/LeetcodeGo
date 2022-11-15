@@ -17,7 +17,7 @@ func capitalizeTitle(title string) string {
 	for i, word := range words {
 		word = strings.ToLower(word)
 		if len(word) > 2 {
-			words[i] = strings.Title(word)
+			words[i] = strings.ToUpper(word[:1]) + word[1:]
 		}
 	}
 	return strings.Join(words, " ")
