@@ -14,11 +14,9 @@ func minSteps(s string, t string) int {
 	for _, c := range s {
 		alphabet[c-'a']++
 	}
-	fmt.Println(alphabet)
 	for _, c := range t {
 		alphabet[c-'a']--
 	}
-	fmt.Println(alphabet)
 	sum := 0
 	for _, num := range alphabet {
 		if num < 0 {
@@ -26,7 +24,7 @@ func minSteps(s string, t string) int {
 		}
 		sum += num
 	}
-	return sum
+	return sum / 2
 }
 
 func main() {
