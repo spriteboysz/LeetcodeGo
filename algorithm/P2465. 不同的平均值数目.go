@@ -1,7 +1,7 @@
 /**
  * Author: Deean
  * Date: 2022/11/13 23:19
- * FileName: algorithm/P6237. 不同的平均值数目.go
+ * FileName: algorithm/P2465. 不同的平均值数目.go
  * Description:
  */
 
