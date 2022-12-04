@@ -28,7 +28,7 @@ func imageSmoother(img [][]int) [][]int {
 		smooth[i] = make([]int, n)
 		for j := range smooth[i] {
 			sum, num := 0, 0
-			for _, row := range img[max(i-1, 0):min(j+2, n)] {
+			for _, row := range img[max(i-1, 0):min(i+2, m)] {
 				for _, v := range row[max(j-1, 0):min(j+2, n)] {
 					sum += v
 					num++
