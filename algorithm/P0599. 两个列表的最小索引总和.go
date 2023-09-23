@@ -1,7 +1,7 @@
 /**
  * Author: Deean
  * Date: 2022/11/20 17:49
- * FileName: algorithm/P599. 两个列表的最小索引总和.go
+ * FileName: algorithm/P0599. 两个列表的最小索引总和.go
  * Description:
  */
 
