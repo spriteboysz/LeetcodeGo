@@ -31,9 +31,9 @@ func List2String(head *ListNode) string {
 
 // Str2List convert []int to List
 func Str2List(s string) *ListNode {
-	strs := strings.Split(s[1:len(s)-1], ",")
+	ss := strings.Split(s[1:len(s)-1], ",")
 	var nums []int
-	for _, str := range strs {
+	for _, str := range ss {
 		num, _ := strconv.Atoi(str)
 		nums = append(nums, num)
 	}
@@ -60,25 +60,4 @@ func (l *ListNode) GetNodeWith(val int) *ListNode {
 		res = res.Next
 	}
 	return res
-}
-
-// Str2ListWithCycle returns a list whose tail point to pos-indexed node
-// head's index is 0
-// if pos = -1, no cycle
-func Str2ListWithCycle(s string, pos int) *ListNode {
-	head := Str2List(s)
-	if pos == -1 {
-		return head
-	}
-	c := head
-	for pos > 0 {
-		c = c.Next
-		pos--
-	}
-	tail := c
-	for tail.Next != nil {
-		tail = tail.Next
-	}
-	tail.Next = c
-	return head
 }

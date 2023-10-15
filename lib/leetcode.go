@@ -7,8 +7,6 @@
 
 package lib
 
-import "fmt"
-
 func max(a int, b int) int {
 	if a > b {
 		return a
@@ -23,8 +21,4 @@ func min(a, b int) int {
 	} else {
 		return a
 	}
-}
-
-func main() {
-	fmt.Println()
 }
